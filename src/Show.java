@@ -24,6 +24,18 @@ public class Show extends Media{
         this.episodesWatched = 0;
 
 
+        @Override
+        public int getRuntimeMinutes() {
+            return seasons * episodesPerSeason * episodeLength;
+        }
+
+        @Override
+        public void showInfo() {
+            System.out.println(getTitle() + " (" + getGenre() +"), rating: " + getRating() + ", seasons: "+seasons
+            + ", episodes watched: " + episodesWatched + " of " + episodesPerSeason*seasons);
+        }
+
+
 
 
     }
