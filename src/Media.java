@@ -18,22 +18,27 @@ public class Media {
 
     }
         public String getTitle() {
-            return this.title;
+
+        return this.title;
         }
 
         public String getGenre() {
-            return this.genre;
+
+        return this.genre;
         }
         public double getRating() {
-            return this.rating;
+
+        return this.rating;
         }
 
         public void showInfo () {
-            System.out.println(title + " (" + genre + "), rating: " + rating);
+
+        System.out.println(title + " (" + genre + "), rating: " + rating);
         }
 
         public int getRuntimeMinutes () {
-            return 0;
+
+        return 0;
         }
 
 
