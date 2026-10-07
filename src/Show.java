@@ -1,4 +1,4 @@
-public class Show extends Media{
+public class Show extends Media implements EpisodeTrackable{
 
     private int seasons;
     private int episodesPerSeason;
@@ -6,7 +6,7 @@ public class Show extends Media{
     private int episodesWatched;
 
     public Show (String title, String genre, double rating, int seasons, int episodesPerSeason, int episodeLength) {
-        super (title, genre, rating);
+        super(title, genre, rating);
 
         if (seasons <= 0) {
             throw new IllegalArgumentException("Seasons must be greater than 0 but they were " + seasons);
@@ -16,13 +16,13 @@ public class Show extends Media{
 
         }
         if (episodesPerSeason <= 0) {
-            throw new IllegalArgumentException("The number of episodes per season should be higher than 0");
+            throw new IllegalArgumentException("The number of episodes per season should be higher than 0 but it was " + episodesPerSeason);
         }
         this.seasons = seasons;
         this.episodesPerSeason = episodesPerSeason;
         this.episodeLength = episodeLength;
         this.episodesWatched = 0;
-
+    }
 
         @Override
         public int getRuntimeMinutes() {
@@ -35,9 +35,17 @@ public class Show extends Media{
             + ", episodes watched: " + episodesWatched + " of " + episodesPerSeason*seasons);
         }
 
+        @Override
+        public void markEpisodeWatched() {
+        if (episodesWatched == (seasons * episodesPerSeason)) {
+            throw new IllegalStateException("You have seen the whole show, no new episodes available!");
+        }
+        episodesWatched++;
+        }
 
 
 
-    }
+
+
 
 }
