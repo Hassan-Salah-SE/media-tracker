@@ -27,9 +27,20 @@ public class Anime extends Media {
         this.fillerEpisodes = fillerEpisodes;
         this.episodeLength = episodeLength;
         this.episodesWatched = 0;
-
-
-
     }
+        @Override
+        public int getRuntimeMinutes() {
+            return (totalEpisodes - fillerEpisodes) * episodeLength;
+        }
+
+        @Override
+        public void showInfo() {
+            System.out.println(getTitle()+ " (" + getGenre() + "), rating: " + getRating()+ ", total episodes: " +
+                    totalEpisodes+ ", filler episodes: "+ fillerEpisodes + ", episodes watched: " + episodesWatched);
+        }
+
+
+
+
 
 }
