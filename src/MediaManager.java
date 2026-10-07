@@ -27,5 +27,17 @@ public class MediaManager {
         return total;
     }
 
+    public void searchByTitle(String text) {
+        boolean found = false;
+        for (Media m: library) {
+            if(m.getTitle().toLowerCase().contains(text.toLowerCase())){
+                found = true;
+                m.showInfo();
+            }
+        }
+        if (!found) {
+            System.out.println("No media found with this title.");
+        }
+    }
 
 }
