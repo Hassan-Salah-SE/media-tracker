@@ -1,5 +1,5 @@
 
-public class Anime extends Media {
+public class Anime extends Media implements EpisodeTrackable {
     private int totalEpisodes;
     private int fillerEpisodes;
     private int episodeLength;
@@ -39,7 +39,13 @@ public class Anime extends Media {
                     totalEpisodes+ ", filler episodes: "+ fillerEpisodes + ", episodes watched: " + episodesWatched);
         }
 
-
+        @Override
+        public void markEpisodeWatched() {
+        if (episodesWatched == (totalEpisodes - fillerEpisodes)) {
+            throw new IllegalStateException("You have watched all non-filler episodes!");
+        }
+        episodesWatched++;
+        }
 
 
 
