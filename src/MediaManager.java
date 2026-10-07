@@ -19,5 +19,13 @@ public class MediaManager {
         }
     }
 
+    public int getTotalRuntimeMinutes() {
+        int total = 0;
+        for (int i=0; i<library.size(); i++) {
+            total = total + library.get(i).getRuntimeMinutes();
+        }
+        return total;
+    }
+
 
 }
