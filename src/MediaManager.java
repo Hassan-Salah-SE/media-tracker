@@ -40,4 +40,12 @@ public class MediaManager {
         }
     }
 
+    public void removeMedia(int number) {
+        if ((number <1) || (number > library.size())) {
+            throw new IllegalArgumentException("The number must be between 1 and "+ library.size());
+        }
+        library.remove(number -1);
+
+    }
+
 }
