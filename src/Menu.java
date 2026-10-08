@@ -1,5 +1,8 @@
 import java.util.Scanner;
-
+// Menu handles only interaction: it prints the options, reads the user's
+// input with Scanner and calls MediaManager to do the actual work.
+// run() repeats in a while loop, and a switch statement picks the action.
+// Invalid input is caught with try/catch, so the program does not crash
 public class Menu {
     private MediaManager manager = new MediaManager();
     private Scanner scanner = new Scanner(System.in);
@@ -94,6 +97,10 @@ public class Menu {
     public void searchMedia() {
         System.out.println("Search for: ");
         String text = scanner.nextLine();
+        if (text.isBlank()) {
+            System.out.println("Search text cannot be empty.");
+            return;
+        }
         manager.searchByTitle(text);
     }
 
