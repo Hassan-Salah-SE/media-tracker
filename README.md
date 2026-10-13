@@ -9,11 +9,10 @@ lets me mark episodes as watched.
 
 ## Superclass
 - Name: `Media`
-- Common fields: title, genre, rating
-- Common methods:
-    - `showInfo()` – prints the information about the media
-    - `getRuntimeMinutes()` – returns the total watch time in minutes
-      (means the same thing in every subclass)
+- Common fields (private, accessed through getters): title, genre, rating
+- The constructor validates the values and throws IllegalArgumentException
+  if the title is empty or the rating is outside 0-10.
+- Methods overridden by the subclasses: `showInfo()`, `getRuntimeMinutes()`
 
 ## Subclasses
 
@@ -32,6 +31,8 @@ lets me mark episodes as watched.
     - `getRuntimeMinutes()`: (totalEpisodes - fillerEpisodes) * episodeLength
     - `showInfo()`: prints title, genre, number of filler episodes and how
       many minutes are saved by skipping filler
+   
+both Anime and Show implement EpisodeTrackable
 
 ## Interface
 - Name: `EpisodeTrackable`
@@ -41,10 +42,12 @@ lets me mark episodes as watched.
 
 ## Menu
 1. Add media
-2. Remove media
+2. Show all
 3. Search by title
-4. Show total hours left to watch
-5. Mark an episode as watched
+4. Remove media
+5. Total hours left to watch
+6. Mark episode as watched
+0. Exit
 
 ## Error scenarios
 - Empty title when creating media (validated in the `Media` constructor,
