@@ -47,5 +47,26 @@ public class MediaManager {
         library.remove(number -1);
 
     }
+    public void markEpisodeWatched(int number) {
+        if ((number<1) || (number> library.size())){
+            throw new IllegalArgumentException("The number must be between 1 and "+ library.size());
+        }
+        Media item = library.get(number -1);
+        if (item instanceof EpisodeTrackable tracker) {
+            tracker.markEpisodeWatched();
+            System.out.println("Episode marked as watched");
+        } else {
+            throw new IllegalArgumentException("This media has no episodes to mark.");
+        }
+    }
+
+
+        public int getRemainingRuntimeMinutes() {
+        int total = 0;
+        for (int i = 0; i < library.size(); i++) {
+            total = total + library.get(i).getRemainingMinutes();
+        }
+        return total;
+    }
 
 }
