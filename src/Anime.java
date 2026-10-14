@@ -30,7 +30,8 @@ public class Anime extends Media implements EpisodeTrackable {
     }
         @Override
         public int getRuntimeMinutes() {
-            return (totalEpisodes - fillerEpisodes) * episodeLength;
+
+        return (totalEpisodes - fillerEpisodes) * episodeLength;
         }
 
         @Override
@@ -45,6 +46,12 @@ public class Anime extends Media implements EpisodeTrackable {
             throw new IllegalStateException("You have watched all non-filler episodes!");
         }
         episodesWatched++;
+        }
+
+
+        @Override
+        public int getRemainingMinutes() {
+        return (totalEpisodes - fillerEpisodes - episodesWatched) * episodeLength;
         }
 
 

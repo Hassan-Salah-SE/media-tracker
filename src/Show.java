@@ -26,7 +26,8 @@ public class Show extends Media implements EpisodeTrackable{
 
         @Override
         public int getRuntimeMinutes() {
-            return seasons * episodesPerSeason * episodeLength;
+
+        return seasons * episodesPerSeason * episodeLength;
         }
 
         @Override
@@ -41,6 +42,12 @@ public class Show extends Media implements EpisodeTrackable{
             throw new IllegalStateException("You have seen the whole show, no new episodes available!");
         }
         episodesWatched++;
+        }
+
+
+        @Override
+        public int getRemainingMinutes() {
+        return (seasons * episodesPerSeason - episodesWatched) * episodeLength;
         }
 
 
