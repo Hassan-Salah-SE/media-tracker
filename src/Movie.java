@@ -1,4 +1,4 @@
-// Movie is a subclass of Media. It adds a length in minutes.
+// Movie is a subclass of Media. It adds a length in minutes
 
 public class Movie extends Media {
     private int lengthMinutes;
@@ -15,13 +15,14 @@ public class Movie extends Media {
 
     @Override
     public int getRuntimeMinutes () {
+
         return lengthMinutes;
     }
 
     @Override
-     public void showInfo () {
-        System.out.println(getTitle()+ " (" + getGenre()+"), rating: "+ getRating()+ ", length: " +
-                lengthMinutes / 60 + "h, " + lengthMinutes % 60 + "min");
+     public String getInfo () {
+        return getTitle()+ " (" + getGenre()+"), rating: "+ getRating()+ ", length: " +
+                lengthMinutes / 60 + "h, " + lengthMinutes % 60 + "min";
     }
 
 }

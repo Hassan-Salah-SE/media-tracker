@@ -31,14 +31,19 @@ public class Media {
         return this.rating;
         }
 
-        public void showInfo () {
+        public String getInfo()  {
 
-        System.out.println(title + " (" + genre + "), rating: " + rating);
+        return title + " (" + genre + "), rating: " + rating;
         }
 
         public int getRuntimeMinutes () {
 
         return 0;
+        }
+
+        public int getRemainingMinutes() {
+
+        return getRuntimeMinutes();
         }
 
 

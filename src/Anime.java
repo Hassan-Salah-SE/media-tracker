@@ -35,9 +35,9 @@ public class Anime extends Media implements EpisodeTrackable {
         }
 
         @Override
-        public void showInfo() {
-            System.out.println(getTitle()+ " (" + getGenre() + "), rating: " + getRating()+ ", total episodes: " +
-                    totalEpisodes+ ", filler episodes: "+ fillerEpisodes + ", episodes watched: " + episodesWatched);
+        public String getInfo() {
+            return getTitle()+ " (" + getGenre() + "), rating: " + getRating()+ ", total episodes: " +
+                    totalEpisodes+ ", filler episodes: "+ fillerEpisodes + ", episodes watched: " + episodesWatched;
         }
 
         @Override

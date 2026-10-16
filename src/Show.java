@@ -31,9 +31,9 @@ public class Show extends Media implements EpisodeTrackable{
         }
 
         @Override
-        public void showInfo() {
-            System.out.println(getTitle() + " (" + getGenre() +"), rating: " + getRating() + ", seasons: "+seasons
-            + ", episodes watched: " + episodesWatched + " of " + episodesPerSeason*seasons);
+        public String getInfo() {
+            return getTitle() + " (" + getGenre() +"), rating: " + getRating() + ", seasons: "+seasons
+            + ", episodes watched: " + episodesWatched + " of " + episodesPerSeason*seasons;
         }
 
         @Override

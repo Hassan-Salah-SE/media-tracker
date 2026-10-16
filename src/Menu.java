@@ -1,5 +1,5 @@
 import java.util.Scanner;
-// Menu handles only interaction: it prints the options, reads the user's
+// Menu handles the menu flow and user input: it prints the options, reads the user's
 // input with Scanner and calls MediaManager to do the actual work.
 // run() repeats in a while loop, and a switch statement picks the action.
 // Invalid input is caught with try/catch, so the program does not crash
@@ -54,12 +54,17 @@ public class Menu {
         System.out.println("Type 1 for Movie, 2 for Show, 3 for Anime");
         String type = scanner.nextLine();
 
+        if (!type.equals("1") && !type.equals("2") && !type.equals("3")) {
+            System.out.println("Invalid type!");
+            return;
+        }
+
         try{
             System.out.println("Title: ");
             String title = scanner.nextLine();
             System.out.println("Genre: ");
             String genre = scanner.nextLine();
-            System.out.println("Rating(1-10): ");
+            System.out.println("Rating(0-10): ");
             double rating = Double.valueOf(scanner.nextLine());
 
             if(type.equals("1")){
@@ -74,7 +79,7 @@ public class Menu {
                 System.out.println("Episodes length: ");
                 int epLength = Integer.valueOf(scanner.nextLine());
                 manager.addMedia(new Show(title, genre, rating, seasons, episodes, epLength));
-            } else if (type.equals("3")) {
+            } else {
                 System.out.println("Total episodes: ");
                 int total = Integer.valueOf(scanner.nextLine());
                 System.out.println("Total filler episodes: ");
@@ -82,9 +87,7 @@ public class Menu {
                 System.out.println("Episodes length: ");
                 int length = Integer.valueOf(scanner.nextLine());
                 manager.addMedia(new Anime(title, genre, rating, total, filler, length));
-            } else {
-                System.out.println("Invalid type!");
-                return;
+
             }  System.out.println("Added.");
         } catch (NumberFormatException e) {
                 System.out.println("Please type a valid number.");
@@ -105,10 +108,14 @@ public class Menu {
     }
 
     public void showTotalTime(){
-        int min = manager.getTotalRuntimeMinutes();
+        int min = manager.getRemainingRuntimeMinutes();
         System.out.println("Total: " + min/60 + "h " + min%60 +"min");
     }
     public void removeMedia(){
+        if (manager.isEmpty()) {
+            System.out.println("The library is empty!");
+            return;
+        }
         manager.showAll();
         System.out.println("Number to remove: ");
         try {
@@ -122,6 +129,10 @@ public class Menu {
         }
     }
     public void markWatched() {
+        if (manager.isEmpty()) {
+            System.out.println("The library is empty!");
+            return;
+        }
         manager.showAll();
         System.out.println("Number to mark ");
         try {

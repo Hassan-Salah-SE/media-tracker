@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+
 public class MediaManager {
     private ArrayList<Media> library = new ArrayList<>();
 
@@ -15,16 +16,13 @@ public class MediaManager {
 
         for (int i = 0; i < library.size(); i++) {
             System.out.print((i + 1) + ". ");
-            library.get(i).showInfo();
+            System.out.println(library.get(i).getInfo());
         }
     }
 
-    public int getTotalRuntimeMinutes() {
-        int total = 0;
-        for (int i=0; i<library.size(); i++) {
-            total = total + library.get(i).getRuntimeMinutes();
-        }
-        return total;
+
+    public boolean isEmpty() {
+        return library.isEmpty();
     }
 
     public void searchByTitle(String text) {
@@ -32,7 +30,7 @@ public class MediaManager {
         for (Media m: library) {
             if(m.getTitle().toLowerCase().contains(text.toLowerCase())){
                 found = true;
-                m.showInfo();
+                System.out.println(m.getInfo());
             }
         }
         if (!found) {
